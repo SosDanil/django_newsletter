@@ -40,7 +40,7 @@ INSTALLED_APPS = [
 
     'newsletter',
     'clients',
-    'messages',
+    'text_messages',
 ]
 
 MIDDLEWARE = [

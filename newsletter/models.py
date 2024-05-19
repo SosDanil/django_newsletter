@@ -1,7 +1,7 @@
 from django.db import models
 
 from clients.models import Client
-from messages.models import Message
+from text_messages.models import TextMessage
 
 
 class Newsletter(models.Model):
@@ -29,7 +29,7 @@ class Newsletter(models.Model):
     status = models.CharField(max_length=9, choices=STATUSES, default=CREATED, verbose_name='статус рассылки')
     periodicity = models.CharField(max_length=11, choices=PERIODICITY, verbose_name='Периодичность рассылки')
 
-    message = models.ForeignKey(Message, on_delete=models.CASCADE, verbose_name='Сообщение')
+    message = models.ForeignKey(TextMessage, on_delete=models.CASCADE, verbose_name='Сообщение')
     to_client = models.ManyToManyField(Client, verbose_name='Клиенту')
 
     def __str__(self):
