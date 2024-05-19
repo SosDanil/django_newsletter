@@ -40,3 +40,26 @@ class Newsletter(models.Model):
         verbose_name_plural = 'Рассылки'
         ordering = ('first_mailing', )
 
+
+class TryMailing(models.Model):
+    SUCCESS = 'success'
+    FAIL = 'fail'
+
+    STATUSES = (
+        (SUCCESS, 'успешно'),
+        (FAIL, 'не успешно'),
+    )
+
+    last_try = models.DateTimeField(verbose_name='Дата и время последней попытки')
+    status = models.CharField(max_length='7', choices=STATUSES, verbose_name='статус попытки')
+    server_respond = models.TextField(verbose_name='Ответ почтового сервера', null=True, blank=True)
+
+    newsletter = models.ForeignKey(Newsletter, on_delete=models.CASCADE, verbose_name='Рассылка')
+
+    def __str__(self):
+        return f'{self.last_try}, статус: {self.status}'
+
+    class Meta:
+        verbose_name = 'Попытка рассылки'
+        verbose_name_plural = 'Попытки рассылки'
+        ordering = ('last_try', )
