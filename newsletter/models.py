@@ -27,7 +27,7 @@ class Newsletter(models.Model):
 
     first_mailing = models.DateTimeField(verbose_name='Время и дата первой отправки')
     status = models.CharField(max_length=9, choices=STATUSES, default=CREATED, verbose_name='статус рассылки')
-    periodicity = models.CharField(max_length=11, choices=PERIODICITY, verbose_name='Периодичность рассылки')
+    periodicity = models.CharField(max_length=20, choices=PERIODICITY, verbose_name='Периодичность рассылки')
 
     message = models.ForeignKey(TextMessage, on_delete=models.CASCADE, verbose_name='Сообщение')
     to_client = models.ManyToManyField(Client, verbose_name='Клиенту')
@@ -51,7 +51,7 @@ class TryMailing(models.Model):
     )
 
     last_try = models.DateTimeField(verbose_name='Дата и время последней попытки')
-    status = models.CharField(max_length='7', choices=STATUSES, verbose_name='статус попытки')
+    status = models.CharField(max_length=10, choices=STATUSES, verbose_name='статус попытки')
     server_respond = models.TextField(verbose_name='Ответ почтового сервера', null=True, blank=True)
 
     newsletter = models.ForeignKey(Newsletter, on_delete=models.CASCADE, verbose_name='Рассылка')
