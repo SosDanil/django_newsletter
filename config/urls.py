@@ -23,5 +23,5 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('newsletter.urls', namespace='newsletter')),
     path('clients/', include('clients.urls', namespace='clients')),
-    path('texts/', include('texts.urls', namespace='texts')),
+    path('messages/', include('messages.urls', namespace='messages')),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
