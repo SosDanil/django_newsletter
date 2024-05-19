@@ -1,0 +1,13 @@
+{% extends 'newsletter/base.html' %}
+{% block content %}
+<div class="col-md-4">
+    <div class="card mb-4 box-shadow">
+        <div class="card-body">
+            <p class="card-text">Тема рассылки: {{ object.message }}</p>
+            <p class="card-text">Статус: {{ object.status }}</p>
+            <p class="card-text">Периодичность: {{ object.periodicity }}</p>
+            <p class="card-text">Время и дата первой отправки: {{ object.first_mailing }}</p>
+        </div>
+    </div>
+</div>
+{% endblock %}
