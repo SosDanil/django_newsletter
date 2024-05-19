@@ -11,7 +11,7 @@ class Client(models.Model):
     )
 
     full_name = models.CharField(max_length=200, verbose_name='Ф.И.О.')
-    email = models.EmailField(verbose_name='Почта')
+    email = models.EmailField(verbose_name='Почта', unique=True)
     gender = models.CharField(max_length=6, choices=GENDERS, verbose_name='Пол клиента')
     age = models.SmallIntegerField(verbose_name='Возраст', null=True, blank=True)
     comment = models.TextField(verbose_name='Комментарий', null=True, blank=True)
