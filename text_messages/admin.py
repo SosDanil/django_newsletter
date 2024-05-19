@@ -1,3 +1,9 @@
 from django.contrib import admin
 
-# Register your models here.
+from text_messages.models import TextMessage
+
+
+@admin.register(TextMessage)
+class TextMessageAdmin(admin.ModelAdmin):
+    list_display = ('subject', 'body',)
+    search_fields = ('subject', 'body',)
