@@ -13,10 +13,10 @@
                 <div class="btn-group">
                     <a href="{% url 'newsletter:detail' object.pk %}" type="button"
                        class="btn btn-sm btn-outline-secondary">Информация</a>
-                    <a href="#" type="button"
-                       class="btn btn-sm btn-outline-secondary">Edit</a>
-                    <a href="#" type="button"
-                       class="btn btn-sm btn-outline-danger">Delete</a>
+                    <a href="{% url 'newsletter:update' object.pk %}" type="button"
+                       class="btn btn-sm btn-outline-secondary">Редактировать</a>
+                    <a href="{% url 'newsletter:delete' object.pk %}" type="button"
+                       class="btn btn-sm btn-outline-danger">Удалить</a>
                 </div>
             </div>
         </div>

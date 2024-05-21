@@ -22,8 +22,16 @@ class NewsletterDetailView(DetailView):
 
 class NewsletterCreateView(CreateView):
     model = Newsletter
-    extra_context = {
-        'title': 'Создание рассылки'
-    }
     form_class = NewsletterForm
+    success_url = reverse_lazy('newsletter:list')
+
+
+class NewsletterUpdateView(UpdateView):
+    model = Newsletter
+    form_class = NewsletterForm
+    success_url = reverse_lazy('newsletter:list')
+
+
+class NewsletterDeleteView(DeleteView):
+    model = Newsletter
     success_url = reverse_lazy('newsletter:list')
