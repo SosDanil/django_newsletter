@@ -19,6 +19,12 @@ class NewsletterDetailView(DetailView):
         'title': 'Информация о рассылке'
     }
 
+    def get_context_data(self, **kwargs):
+        context_data = super().get_context_data(**kwargs)
+        context_data['emails'] = self.object.to_client.values_list('email', flat=True)
+
+        return context_data
+
 
 class NewsletterCreateView(CreateView):
     model = Newsletter

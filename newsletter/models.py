@@ -26,6 +26,7 @@ class Newsletter(models.Model):
     )
 
     first_mailing = models.DateTimeField(verbose_name='Время и дата первой отправки')
+    last_mailing = models.DateTimeField(verbose_name='Время и дата последней отправки')
     status = models.CharField(max_length=9, choices=STATUSES, default=CREATED, verbose_name='статус рассылки')
     periodicity = models.CharField(max_length=20, choices=PERIODICITY, verbose_name='Периодичность рассылки')
 

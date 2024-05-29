@@ -7,6 +7,16 @@
             <p class="card-text">Статус: {{ object.status }}</p>
             <p class="card-text">Периодичность: {{ object.periodicity }}</p>
             <p class="card-text">Время и дата первой отправки: {{ object.first_mailing }}</p>
+            <p class="card-text">Время и дата последней отправки : {{ object.last_mailing }} </p>
+            <p class="card-text">Клиенты :
+            {% for email in emails %}
+                {% if not forloop.last %}
+                    {{ email }},
+                {% else %}
+                    {{ email }}
+                {% endif %}
+            {% endfor %}
+            </p>
         </div>
     </div>
 </div>

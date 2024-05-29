@@ -5,7 +5,7 @@ from newsletter.models import Newsletter, TryMailing
 
 @admin.register(Newsletter)
 class NewsletterAdmin(admin.ModelAdmin):
-    list_display = ('message', 'status', 'first_mailing', 'periodicity')
+    list_display = ('message', 'status', 'first_mailing', 'last_mailing', 'periodicity')
     list_filter = ('status', 'periodicity', 'message',)
     search_fields = ('message',)
 
