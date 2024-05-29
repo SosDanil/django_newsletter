@@ -34,7 +34,8 @@ class Newsletter(models.Model):
     to_client = models.ManyToManyField(Client, verbose_name='Клиенту')
 
     def __str__(self):
-        return f'{self.message}, {self.first_mailing}, статус: {self.status}, периодичность: {self.periodicity}'
+        return (f'{self.message}, {self.first_mailing}, {self.last_mailing}, статус: {self.status},'
+                f' периодичность: {self.periodicity}')
 
     class Meta:
         verbose_name = 'Рассылка'
