@@ -56,10 +56,12 @@ def launch_newsletter():
             delta = NOW - last_try.last_try
             if newsletter.periodicity == newsletter.ONCE_A_DAY and delta.days >= 1:
                 send_mail_func(newsletter)
+                print('Отработала отправка рассылки со статусом Запущена каждый день')
             elif newsletter.periodicity == newsletter.ONCE_A_WEEK and delta.days >= 7:
                 send_mail_func(newsletter)
+                print('Отработала отправка рассылки со статусом Запущена каждую неделю')
             elif newsletter.periodicity == newsletter.ONCE_A_MONTH and delta.days >= 30:
                 send_mail_func(newsletter)
-            print('Отработала отправка рассылки со статусом Запущена')
+                print('Отработала отправка рассылки со статусом Запущена каждый месяц')
 
     print(f'Текущее время:{NOW}')
