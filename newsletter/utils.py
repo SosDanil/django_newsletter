@@ -52,7 +52,7 @@ def launch_newsletter():
             print('Отработала отправка и смена статуса на ЗАПУЩЕНО')
 
         elif newsletter.status == newsletter.LAUNCHED:
-            last_try = TryMailing.objects.filter(newsletter=newsletter).order_by('last_try').first()
+            last_try = TryMailing.objects.filter(newsletter=newsletter).order_by('-last_try').first()
             delta = NOW - last_try.last_try
             if newsletter.periodicity == newsletter.ONCE_A_DAY and delta.days >= 1:
                 send_mail_func(newsletter)

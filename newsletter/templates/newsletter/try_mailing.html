@@ -1,0 +1,16 @@
+{% extends 'newsletter/base.html' %}
+
+{% block content %}
+{% for object in object_list %}
+<div class="col-md-4">
+    <div class="card mb-4 box-shadow">
+        <div class="card-body">
+            <p class="card-text">{{ object.newsletter }}</p>
+            <p class="card-text">Дата отправки: {{ object.last_try }}</p>
+            <p class="card-text">Статус: {{ object.status }}</p>
+            <p class="card-text">Ответ почтового сервера: {{ object.server_respond }}</p>
+        </div>
+    </div>
+</div>
+{% endfor %}
+{% endblock %}
