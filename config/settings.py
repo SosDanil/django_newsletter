@@ -45,6 +45,7 @@ INSTALLED_APPS = [
     'newsletter',
     'clients',
     'text_messages',
+    'users',
 ]
 
 MIDDLEWARE = [
@@ -154,3 +155,5 @@ CRONJOBS = [
     ('*/1 * * * *', 'newsletter.utils.launch_newsletter',
      '>> /home/sosdanil/PycharmProjects/django_newsletter/newsletter/scheduled_jobs.log')
 ]
+
+AUTH_USER_MODEL = 'users.User'
