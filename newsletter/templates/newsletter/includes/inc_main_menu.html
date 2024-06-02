@@ -4,5 +4,15 @@
         <li><a href="{% url 'newsletter:list' %}" class="text-white">Главная</a></li>
         <li><a href="{% url 'clients:list' %}" class="text-white">Клиенты</a></li>
         <li><a href="{% url 'messages:list' %}" class="text-white">Сообщения</a></li>
+        {% if user.is_authenticated %}
+            <li><a href="{% url 'users:profile' %}" class="text-white">Профиль</a></li>
+            <form method="post" action="{% url 'users:logout' %}">
+                {% csrf_token %}
+                <button class="btn btn-outline-light" type="submit">Выйти</button>
+            </form>
+        {% else %}
+            <li><a href="{% url 'users:login' %}" class="text-white">Войти</a></li>
+            <li><a href="{% url 'users:register' %}" class="text-white">Регистрация</a></li>
+        {% endif %}
     </ul>
 </div>
