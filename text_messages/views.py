@@ -1,3 +1,4 @@
+from django.contrib.auth.mixins import LoginRequiredMixin
 from django.shortcuts import render
 
 
@@ -24,19 +25,24 @@ class TextMessageDetailView(DetailView):
     }
 
 
-class TextMessageCreateView(CreateView):
+class TextMessageCreateView(LoginRequiredMixin, CreateView):
     model = TextMessage
     form_class = TextMessageForm
     success_url = reverse_lazy('messages:list')
 
+    login_url = '/users/register/'
 
-class TextMessageUpdateView(UpdateView):
+
+class TextMessageUpdateView(LoginRequiredMixin, UpdateView):
     model = TextMessage
     form_class = TextMessageForm
     success_url = reverse_lazy('messages:list')
 
+    login_url = '/users/register/'
 
-class TextMessageDeleteView(DeleteView):
+
+class TextMessageDeleteView(LoginRequiredMixin, DeleteView):
     model = TextMessage
     success_url = reverse_lazy('messages:list')
 
+    login_url = '/users/register/'

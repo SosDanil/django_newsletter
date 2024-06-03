@@ -1,3 +1,5 @@
+from django.contrib.auth.decorators import login_required
+from django.contrib.auth.mixins import LoginRequiredMixin
 from django.shortcuts import render
 from django.urls import reverse_lazy
 from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
@@ -26,23 +28,30 @@ class NewsletterDetailView(DetailView):
         return context_data
 
 
-class NewsletterCreateView(CreateView):
+class NewsletterCreateView(LoginRequiredMixin, CreateView):
     model = Newsletter
     form_class = NewsletterForm
     success_url = reverse_lazy('newsletter:list')
 
+    login_url = '/users/register/'
 
-class NewsletterUpdateView(UpdateView):
+
+class NewsletterUpdateView(LoginRequiredMixin, UpdateView):
     model = Newsletter
     form_class = NewsletterForm
     success_url = reverse_lazy('newsletter:list')
 
+    login_url = '/users/register/'
 
-class NewsletterDeleteView(DeleteView):
+
+class NewsletterDeleteView(LoginRequiredMixin, DeleteView):
     model = Newsletter
     success_url = reverse_lazy('newsletter:list')
 
+    login_url = '/users/register/'
 
+
+@login_required(login_url='/users/register/')
 def view_try_mailing(request, pk):
     context = {
         'object_list': TryMailing.objects.filter(newsletter=pk),
