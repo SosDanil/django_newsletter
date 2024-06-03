@@ -14,4 +14,4 @@ class NewsletterForm(StyleFormMixin, forms.ModelForm):
 
     class Meta:
         model = Newsletter
-        exclude = ('status',)
+        exclude = ('status', 'owner',)

@@ -14,4 +14,4 @@ class TextMessageForm(StyleFormMixin, forms.ModelForm):
 
     class Meta:
         model = TextMessage
-        fields = '__all__'
+        exclude = ('owner',)
