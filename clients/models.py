@@ -1,5 +1,7 @@
 from django.db import models
 
+from users.models import User
+
 
 class Client(models.Model):
     FEMALE = 'female'
@@ -15,6 +17,8 @@ class Client(models.Model):
     gender = models.CharField(max_length=10, choices=GENDERS, verbose_name='Пол клиента')
     age = models.SmallIntegerField(verbose_name='Возраст', null=True, blank=True)
     comment = models.TextField(verbose_name='Комментарий', null=True, blank=True)
+
+    owner = models.ForeignKey(User, verbose_name='Владелец', blank=True, null=True, on_delete=models.SET_NULL)
 
     def __str__(self):
         return f'{self.full_name} ({self.email})'
