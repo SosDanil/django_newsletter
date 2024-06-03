@@ -12,6 +12,8 @@ class User(AbstractUser):
     USERNAME_FIELD = "email"
     REQUIRED_FIELDS = []
 
+    token = models.CharField(max_length=100, verbose_name='Токен', blank=True, null=True)
+
     class Meta:
         verbose_name = 'Пользователь'
         verbose_name_plural = 'Пользователи'
