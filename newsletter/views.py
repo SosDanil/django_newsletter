@@ -35,6 +35,13 @@ class NewsletterCreateView(LoginRequiredMixin, CreateView):
 
     login_url = '/users/register/'
 
+    def form_valid(self, form):
+        newsletter = form.save()
+        user = self.request.user
+        newsletter.owner = user
+        newsletter.save()
+        return super().form_valid(form)
+
 
 class NewsletterUpdateView(LoginRequiredMixin, UpdateView):
     model = Newsletter

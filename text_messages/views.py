@@ -32,6 +32,13 @@ class TextMessageCreateView(LoginRequiredMixin, CreateView):
 
     login_url = '/users/register/'
 
+    def form_valid(self, form):
+        text_message = form.save()
+        user = self.request.user
+        text_message.owner = user
+        text_message.save()
+        return super().form_valid(form)
+
 
 class TextMessageUpdateView(LoginRequiredMixin, UpdateView):
     model = TextMessage

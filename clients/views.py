@@ -28,6 +28,13 @@ class ClientCreateView(LoginRequiredMixin, CreateView):
 
     login_url = '/users/register/'
 
+    def form_valid(self, form):
+        client = form.save()
+        user = self.request.user
+        client.owner = user
+        client.save()
+        return super().form_valid(form)
+
 
 class ClientUpdateView(LoginRequiredMixin, UpdateView):
     model = Client
