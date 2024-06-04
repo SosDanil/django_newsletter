@@ -40,28 +40,32 @@ def launch_newsletter():
 
     for newsletter in newsletters:
         print('прошел по рассылке')
-        if newsletter.last_mailing < NOW:
-            newsletter.status = newsletter.COMPLETED
-            newsletter.save()
-            print('отработал статус COMPLETED')
+        if not newsletter.is_active:
+            print('рассылка отключена')
+            continue
+        else:
+            if newsletter.last_mailing < NOW:
+                newsletter.status = newsletter.COMPLETED
+                newsletter.save()
+                print('отработал статус COMPLETED')
 
-        elif newsletter.status == newsletter.CREATED:
-            send_mail_func(newsletter)
-            newsletter.status = newsletter.LAUNCHED
-            newsletter.save()
-            print('Отработала отправка и смена статуса на ЗАПУЩЕНО')
+            elif newsletter.status == newsletter.CREATED:
+                send_mail_func(newsletter)
+                newsletter.status = newsletter.LAUNCHED
+                newsletter.save()
+                print('Отработала отправка и смена статуса на ЗАПУЩЕНО')
 
-        elif newsletter.status == newsletter.LAUNCHED:
-            last_try = TryMailing.objects.filter(newsletter=newsletter).order_by('-last_try').first()
-            delta = NOW - last_try.last_try
-            if newsletter.periodicity == newsletter.ONCE_A_DAY and delta.days >= 1:
-                send_mail_func(newsletter)
-                print('Отработала отправка рассылки со статусом Запущена каждый день')
-            elif newsletter.periodicity == newsletter.ONCE_A_WEEK and delta.days >= 7:
-                send_mail_func(newsletter)
-                print('Отработала отправка рассылки со статусом Запущена каждую неделю')
-            elif newsletter.periodicity == newsletter.ONCE_A_MONTH and delta.days >= 30:
-                send_mail_func(newsletter)
-                print('Отработала отправка рассылки со статусом Запущена каждый месяц')
+            elif newsletter.status == newsletter.LAUNCHED:
+                last_try = TryMailing.objects.filter(newsletter=newsletter).order_by('-last_try').first()
+                delta = NOW - last_try.last_try
+                if newsletter.periodicity == newsletter.ONCE_A_DAY and delta.days >= 1:
+                    send_mail_func(newsletter)
+                    print('Отработала отправка рассылки со статусом Запущена каждый день')
+                elif newsletter.periodicity == newsletter.ONCE_A_WEEK and delta.days >= 7:
+                    send_mail_func(newsletter)
+                    print('Отработала отправка рассылки со статусом Запущена каждую неделю')
+                elif newsletter.periodicity == newsletter.ONCE_A_MONTH and delta.days >= 30:
+                    send_mail_func(newsletter)
+                    print('Отработала отправка рассылки со статусом Запущена каждый месяц')
 
     print(f'Текущее время:{NOW}')

@@ -31,6 +31,8 @@ class Newsletter(models.Model):
     status = models.CharField(max_length=9, choices=STATUSES, default=CREATED, verbose_name='статус рассылки')
     periodicity = models.CharField(max_length=20, choices=PERIODICITY, verbose_name='Периодичность рассылки')
 
+    is_active = models.BooleanField(verbose_name='рассылка активна', default=True)
+
     message = models.ForeignKey(TextMessage, on_delete=models.CASCADE, verbose_name='Сообщение')
     to_client = models.ManyToManyField(Client, verbose_name='Клиенту')
     owner = models.ForeignKey(User, verbose_name='Владелец', blank=True, null=True, on_delete=models.SET_NULL)
