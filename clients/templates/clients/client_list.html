@@ -1,9 +1,11 @@
 {% extends 'newsletter/base.html' %}
 
 {% block content %}
+{% if user.is_authenticated %}
 <div class="col-12 mb-5">
     <a class="btn btn-outline-primary" href="{% url 'clients:create' %}">Добавить клиента</a>
 </div>
+{% endif %}
 {% for object in object_list %}
 <div class="col-md-4">
     <div class="card mb-4 box-shadow">
@@ -14,10 +16,12 @@
                 <div class="btn-group">
                     <a href="{% url 'clients:detail' object.pk %}" type="button"
                        class="btn btn-sm btn-outline-secondary">Информация</a>
+                    {% if user == object.owner %}
                     <a href="{% url 'clients:update' object.pk %}" type="button"
                        class="btn btn-sm btn-outline-secondary">Редактировать</a>
                     <a href="{% url 'clients:delete' object.pk %}" type="button"
                        class="btn btn-sm btn-outline-danger">Удалить</a>
+                    {% endif %}
                 </div>
             </div>
         </div>
