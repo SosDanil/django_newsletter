@@ -4,6 +4,9 @@
         <li><a href="{% url 'newsletter:list' %}" class="text-white">Главная</a></li>
         <li><a href="{% url 'clients:list' %}" class="text-white">Клиенты</a></li>
         <li><a href="{% url 'messages:list' %}" class="text-white">Сообщения</a></li>
+        {% if perms.users.view_user %}
+        <li><a href="{% url 'users:list' %}" class="text-white">Пользователи</a></li>
+        {% endif %}
         {% if user.is_authenticated %}
             <li><a href="{% url 'users:profile' %}" class="text-white">Профиль</a></li>
             <form method="post" action="{% url 'users:logout' %}">

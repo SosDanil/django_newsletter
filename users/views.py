@@ -1,13 +1,23 @@
 import secrets
 
+from django.contrib.auth.decorators import login_required, permission_required
+from django.contrib.auth.mixins import PermissionRequiredMixin
 from django.core.mail import send_mail
 from django.shortcuts import get_object_or_404, redirect
 from django.urls import reverse_lazy, reverse
-from django.views.generic import CreateView, UpdateView
+from django.views.generic import CreateView, UpdateView, ListView
 
 from config.settings import EMAIL_HOST_USER
 from users.forms import UserRegisterForm, UserProfileForm
 from users.models import User
+
+
+class UserView(PermissionRequiredMixin, ListView):
+    model = User
+    extra_context = {
+        'title': 'Список пользователей'
+    }
+    permission_required = 'users.view_user'
 
 
 class RegisterView(CreateView):
@@ -47,3 +57,17 @@ def email_verification(request, token):
     user.is_active = True
     user.save()
     return redirect(reverse('users:login'))
+
+
+@login_required
+@permission_required('users.set_active')
+def toggle_activity(request, pk):
+    user_item = get_object_or_404(User, pk=pk)
+    if user_item.is_active:
+        user_item.is_active = False
+    else:
+        user_item.is_active = True
+
+    user_item.save()
+
+    return redirect(reverse('users:list'))

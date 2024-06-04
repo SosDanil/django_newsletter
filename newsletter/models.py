@@ -46,6 +46,10 @@ class Newsletter(models.Model):
         verbose_name_plural = 'Рассылки'
         ordering = ('first_mailing', )
 
+        permissions = [
+            ('set_active', 'Can activate/deactivate newsletter'),
+        ]
+
 
 class TryMailing(models.Model):
     SUCCESS = 'success'

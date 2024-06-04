@@ -13,13 +13,15 @@
             <p class="card-text">{{ object.message }} ({{ object.first_mailing }}-{{ object.last_mailing}})</p>
             <div class="d-flex justify-content-between align-items-center">
                 <div class="btn-group">
+                    {% if user == object.owner or perms.newsletter.view_newsletter %}
                     <a href="{% url 'newsletter:detail' object.pk %}" type="button"
                        class="btn btn-sm btn-outline-secondary">Информация</a>
-                    {% if user == object.owner %}
-                    <a href="{% url 'newsletter:update' object.pk %}" type="button"
-                       class="btn btn-sm btn-outline-secondary">Редактировать</a>
                     <a href="{% url 'newsletter:try_mailing' object.pk %}" type="button"
                        class="btn btn-sm btn-outline-secondary">Попытки</a>
+                    {% endif %}
+                    <a href="{% url 'newsletter:update' object.pk %}" type="button"
+                       class="btn btn-sm btn-outline-secondary">Редактировать</a>
+                    {% if user == object.owner or user.is_superuser == True %}
                     <a href="{% url 'newsletter:delete' object.pk %}" type="button"
                        class="btn btn-sm btn-outline-danger">Удалить</a>
                     {% endif %}

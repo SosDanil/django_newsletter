@@ -1,10 +1,11 @@
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
+from django.core.exceptions import PermissionDenied
 from django.shortcuts import render
 from django.urls import reverse_lazy
 from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
 
-from newsletter.forms import NewsletterForm
+from newsletter.forms import NewsletterForm, NewsletterManagerForm
 from newsletter.models import Newsletter, TryMailing
 
 
@@ -49,6 +50,14 @@ class NewsletterUpdateView(LoginRequiredMixin, UpdateView):
     success_url = reverse_lazy('newsletter:list')
 
     login_url = '/users/register/'
+
+    def get_form_class(self):
+        user = self.request.user
+        if user == self.object.owner:
+            return NewsletterForm
+        if user.has_perm('newsletter.set_active'):
+            return NewsletterManagerForm
+        raise PermissionDenied
 
 
 class NewsletterDeleteView(LoginRequiredMixin, DeleteView):
