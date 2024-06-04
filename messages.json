@@ -1,0 +1,42 @@
+[
+  {
+    "model": "text_messages.textmessage",
+    "pk": 1,
+    "fields": {
+      "subject": "Увольнение",
+      "body": "Вы уволены, к сожалению!"
+    }
+  },
+  {
+    "model": "text_messages.textmessage",
+    "pk": 2,
+    "fields": {
+      "subject": "Повышение зарплаты",
+      "body": "Мы повысили вам зарплату, к нашему сожалению"
+    }
+  },
+  {
+    "model": "text_messages.textmessage",
+    "pk": 3,
+    "fields": {
+      "subject": "Празднование ДР",
+      "body": "У нашего босса ДР, так что все скидываемся по 100 рублей"
+    }
+  },
+  {
+    "model": "text_messages.textmessage",
+    "pk": 4,
+    "fields": {
+      "subject": "Кулер",
+      "body": "Куда делся кулер из офиса?"
+    }
+  },
+  {
+    "model": "text_messages.textmessage",
+    "pk": 8,
+    "fields": {
+      "subject": "Поздравление для Паши",
+      "body": "Поздравляем вас с успешно прожитым днем!"
+    }
+  }
+]
