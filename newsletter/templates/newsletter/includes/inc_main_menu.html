@@ -1,7 +1,8 @@
 <div class="col-sm-4 offset-md-1 py-4">
     <h4 class="text-white">Меню</h4>
     <ul class="list-unstyled">
-        <li><a href="{% url 'newsletter:list' %}" class="text-white">Главная</a></li>
+        <li><a href="{% url 'newsletter:main' %}" class="text-white">Главная</a></li>
+        <li><a href="{% url 'newsletter:list' %}" class="text-white">Рассылки</a></li>
         <li><a href="{% url 'clients:list' %}" class="text-white">Клиенты</a></li>
         <li><a href="{% url 'messages:list' %}" class="text-white">Сообщения</a></li>
         {% if perms.users.view_user %}

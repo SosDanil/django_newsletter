@@ -1,0 +1,45 @@
+{% extends 'newsletter/base.html' %}
+{% load my_tags %}
+{% block content %}
+<div class="row">
+    <table class="table">
+        <thead>
+        <tr class="table-primary">
+            <th scope="col">Количество рассылок всего</th>
+            <th scope="col">Количество активных рассылок</th>
+            <th scope="col">Количество клиентов</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr class="table-secondary">
+            <td>{{ count_newsletters }}</td>
+            <td>{{ count_active_newsletters }}</td>
+            <td>{{ count_clients }}</td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+<div class="row">
+    {% for blog in random_blogs %}
+    <div class="col-md-4">
+        <div class="card w-75 mb-4 box-shadow">
+            <img class="card-img-top"
+                 src="{{ blog.preview|mymedia }}"
+                 alt="Card image cap">
+            <div class="card-header">
+                <p class="card-text">{{ blog.title }} </p>
+                <p class="card-text">Дата публикации: {{ blog.publish_date }} </p>
+            </div>
+            <div class="card-body">
+                <div class="d-flex justify-content-between align-items-center">
+                    <p class="card-text">{{ blog.body }} </p>
+                </div>
+            </div>
+            <div class="card-footer">
+                Количество просмотров: {{ blog.counts_of_view }}
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+{% endblock %}
