@@ -35,7 +35,7 @@ class Newsletter(models.Model):
 
     message = models.ForeignKey(TextMessage, on_delete=models.CASCADE, verbose_name='Сообщение')
     to_client = models.ManyToManyField(Client, verbose_name='Клиенту')
-    owner = models.ForeignKey(User, verbose_name='Владелец', blank=True, null=True, on_delete=models.SET_NULL)
+    owner = models.ForeignKey(User, verbose_name='Владелец', default=1, on_delete=models.CASCADE)
 
     def __str__(self):
         return (f'{self.message}, {self.first_mailing}, {self.last_mailing}, статус: {self.status},'
