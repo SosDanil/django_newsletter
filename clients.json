@@ -1,0 +1,86 @@
+[
+  {
+    "model": "clients.client",
+    "pk": 1,
+    "fields": {
+      "full_name": "Клименко Данил Павлович",
+      "email": "sos.danil@yandex.ru",
+      "gender": "male",
+      "age": 27,
+      "comment": "Любит видеоигры и настольные игры",
+      "owner": 1
+    }
+  },
+  {
+    "model": "clients.client",
+    "pk": 2,
+    "fields": {
+      "full_name": "Иванов Иван Иванович",
+      "email": "Ivan@sky.pro",
+      "gender": "male",
+      "age": 18,
+      "comment": "Часто покупает веганские продукты",
+      "owner": 1
+    }
+  },
+  {
+    "model": "clients.client",
+    "pk": 3,
+    "fields": {
+      "full_name": "Петрова Лера Олеговна",
+      "email": "lera@sky.pro",
+      "gender": "female",
+      "age": 31,
+      "comment": "Есть двое детей",
+      "owner": 1
+    }
+  },
+  {
+    "model": "clients.client",
+    "pk": 4,
+    "fields": {
+      "full_name": "Щукина Сардина Александровна",
+      "email": "fish@sky.pro",
+      "gender": "female",
+      "age": 25,
+      "comment": "Является волонтером",
+      "owner": 1
+    }
+  },
+  {
+    "model": "clients.client",
+    "pk": 6,
+    "fields": {
+      "full_name": "Клименко Павел Иванович",
+      "email": "Klimenko.Pasha-1991@yandex.ru",
+      "gender": "male",
+      "age": 55,
+      "comment": "Есть дети",
+      "owner": 1
+    }
+  },
+  {
+    "model": "clients.client",
+    "pk": 9,
+    "fields": {
+      "full_name": "Тест Тестович",
+      "email": "test@test.ru",
+      "gender": "male",
+      "age": 19,
+      "comment": "Test",
+      "owner": 6
+    }
+  },
+  {
+    "model": "clients.client",
+    "pk": 10,
+    "fields": {
+      "full_name": "Васюков Петр Игоревич",
+      "email": "vasuk@gmail.ru",
+      "gender": "male",
+      "age": 56,
+      "comment": "Стар стал",
+      "owner": 1
+    }
+  }
+]

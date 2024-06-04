@@ -1,0 +1,134 @@
+[
+  {
+    "model": "newsletter.newsletter",
+    "pk": 6,
+    "fields": {
+      "first_mailing": "2024-05-29T09:17:45Z",
+      "last_mailing": "2024-05-30T09:17:52Z",
+      "status": "completed",
+      "periodicity": "every day",
+      "is_active": true,
+      "message": 4,
+      "owner": 1,
+      "to_client": [
+        2,
+        1,
+        6,
+        3,
+        4
+      ]
+    }
+  },
+  {
+    "model": "newsletter.newsletter",
+    "pk": 7,
+    "fields": {
+      "first_mailing": "2024-05-29T09:42:20Z",
+      "last_mailing": "2024-06-03T09:42:27Z",
+      "status": "launched",
+      "periodicity": "every week",
+      "is_active": false,
+      "message": 1,
+      "owner": 1,
+      "to_client": [
+        2,
+        1,
+        3
+      ]
+    }
+  },
+  {
+    "model": "newsletter.newsletter",
+    "pk": 8,
+    "fields": {
+      "first_mailing": "2024-06-04T09:43:18Z",
+      "last_mailing": "2024-06-07T09:43:23Z",
+      "status": "created",
+      "periodicity": "every month",
+      "is_active": true,
+      "message": 2,
+      "owner": 1,
+      "to_client": [
+        1,
+        3,
+        4
+      ]
+    }
+  },
+  {
+    "model": "newsletter.newsletter",
+    "pk": 9,
+    "fields": {
+      "first_mailing": "2024-05-01T09:44:02Z",
+      "last_mailing": "2024-08-09T09:44:08Z",
+      "status": "launched",
+      "periodicity": "every day",
+      "is_active": true,
+      "message": 8,
+      "owner": 1,
+      "to_client": [
+        6
+      ]
+    }
+  },
+  {
+    "model": "newsletter.newsletter",
+    "pk": 10,
+    "fields": {
+      "first_mailing": "2024-05-15T11:15:19Z",
+      "last_mailing": "2024-07-15T11:15:25Z",
+      "status": "launched",
+      "periodicity": "every day",
+      "is_active": true,
+      "message": 2,
+      "owner": 1,
+      "to_client": []
+    }
+  },
+  {
+    "model": "newsletter.newsletter",
+    "pk": 11,
+    "fields": {
+      "first_mailing": "2024-06-16T19:00:00Z",
+      "last_mailing": "2024-07-24T19:00:00Z",
+      "status": "created",
+      "periodicity": "every day",
+      "is_active": false,
+      "message": 9,
+      "owner": 6,
+      "to_client": [
+        9
+      ]
+    }
+  },
+  {
+    "model": "newsletter.trymailing",
+    "pk": 4,
+    "fields": {
+      "last_try": "2024-06-01T11:23:01.819Z",
+      "status": "success",
+      "server_respond": null,
+      "newsletter": 9
+    }
+  },
+  {
+    "model": "newsletter.trymailing",
+    "pk": 5,
+    "fields": {
+      "last_try": "2024-06-01T11:23:01.819Z",
+      "status": "success",
+      "server_respond": null,
+      "newsletter": 10
+    }
+  },
+  {
+    "model": "newsletter.trymailing",
+    "pk": 6,
+    "fields": {
+      "last_try": "2024-06-01T16:41:01.694Z",
+      "status": "success",
+      "server_respond": "1",
+      "newsletter": 7
+    }
+  }
+]
